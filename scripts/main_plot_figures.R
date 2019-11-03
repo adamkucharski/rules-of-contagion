@@ -10,14 +10,6 @@ library(tidyverse)
 library(anytime)
 library(cholera)
 
-#library(CINNA)
-#library(preseqR)
-#
-
-# library(devtools)
-# install_github("adamkucharski/scrapR")
-# library(scrapR)
-
 rm(list=ls()) # Clear workspace
 
 setwd("~/Documents/GitHub/rules-of-contagion/") # Set local directory

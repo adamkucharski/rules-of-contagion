@@ -1,7 +1,7 @@
 # rules-of-contagion
 This repository contains code and data to accompany [The Rules of Contagion: Why Things Spread - and Why They Stop](https://amzn.to/2JJbwxo) by Adam Kucharski.
 
-If you use any of the code/analysis under the GNU license, please cite 'Kucharski AJ, The Rules of Contagion: Why Things Spread - and Why They Stop, Profile Books, 2020' as well as any relevant data sources (listed below).
+If you use any of the code/analysis under the GNU license, please cite 'Kucharski AJ, The Rules of Contagion: Why Things Spread - and Why They Stop, Wellcome Collection/Profile Books, 2020' as well as any relevant data sources (listed below).
 
 ### Guide to files
 

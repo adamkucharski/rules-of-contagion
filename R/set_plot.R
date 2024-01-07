@@ -3,7 +3,7 @@
 
 # Set plot characteristics
 
-par(mar=c(3,3,1,1),mgp=c(2,0.7,0),las=0,family = "Palatino")
+par(mar=c(3,3,1,1),mgp=c(2,0.7,0),las=0,family = "Helvetica")
 
 # Rough line
 

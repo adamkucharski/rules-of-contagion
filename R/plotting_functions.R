@@ -426,6 +426,75 @@ C3_pandemic_2009 <- function(){
 }
 
 
+# Alternative plos vs COVID
+
+C3_pandemic_vs_covid <- function(){
+  
+  # Load data
+  library(covidregionaldata)
+  
+  #all_countries <- get_national_data()  # SLOW function
+  
+  all_uk <- all_countries %>% filter(country == "United Kingdom")
+  
+  #all_uk2 <- all_uk %>% filter(date<=as.Date("2021-07-18"))
+  #plot(all_uk2$date,all_uk2$cases_new,xlim=as.Date(c("2021-06-01","2021-07-18")),xlab="",ylab="cases")
+  
+  data_pandemic = read_csv("data/C3/pandemic_2009.csv")
+  
+  # Plot cases
+  
+  # Plot simulations
+  source("R/set_plot.R")
+  par(mfrow=c(1,1),mar=c(2.5,4,1,1),las=1)
+  
+  xxD = as.Date("2009-06-01")
+  
+  # Timeseries
+  plot(data_pandemic$date,data_pandemic$cases_HPA/1000,type="l",xaxs="i",yaxs="i",col='black',xlim=as.Date(c("2009-02-28","2010-02-01")),xlab="",ylab="",ylim=c(0,1e2),bty="l",lwd=2)
+  title(ylab="Cases (thousands)", line=2.5, cex.lab=1)
+  
+  line_date1 = as.Date("2009-04-13")
+  #lines(c(line_date1,line_date1),c(0,10),lty=1,col=col.list[[2]])
+  #arrows(line_date1,10,line_date1,0,angle=30,length=0.07,col=col.list[[2]])
+  
+  # text(x=as.Date("2009-04-06"),y=15,labels="Spark",cex=0.8,adj=0,col=col.list[[2]])
+  # text(x=-1+xxD,y=20,labels="Growth",cex=0.8,adj=0,col=col.list[[2]])
+  # text(x=35+xxD,y=83,labels="Peak",cex=0.8,adj=0,col=col.list[[2]])
+  # text(x=89+xxD,y=30,labels="Growth",cex=0.8,adj=0,col=col.list[[2]])
+  # text(x=57+xxD,y=50,labels="Decline",cex=0.8,adj=0,col=col.list[[2]])
+  # text(x=135+xxD,y=80,labels="Peak",cex=0.8,adj=0,col=col.list[[2]])
+  # text(x=180+xxD,y=25,labels="Decline",cex=0.8,adj=0,col=col.list[[2]])
+  
+  #dev.copy(pdf,paste("plots/C0_pandemic.pdf",sep=""),width=width.main,height=height.main)
+  dev.copy(png,paste0("plots/Extra_comparison.png"),units="cm",width=width.main*3,height=height.main*3,res=200)
+  dev.off()
+  
+  source("R/set_plot.R")
+  par(mar=c(2.5,4,1,1),las=1)
+  
+  # Plot data and terms
+  term_date = as.Date(c("2009-07-17","2009-09-03"))
+  term_date2 = as.Date(c("2009-10-26","2009-11-02"))
+  cgrey = 0.85
+  plot(data_pandemic$date,data_pandemic$cases_HPA/1000,pch=19,col="white",xlim=as.Date(c("2009-05-28","2009-12-24")),xaxs="i",yaxs="i",xlab="",ylab="",ylim=c(0,1e2),bty="l",lwd=2)
+  
+  polygon(x=c(term_date,rev(term_date)),y=c(0,0,90,90),col=rgb(cgrey,cgrey,cgrey),lty=0)
+  polygon(x=c(term_date2,rev(term_date2)),y=c(0,0,90,90),col=rgb(cgrey,cgrey,cgrey),lty=0)
+  lines(data_pandemic$date,data_pandemic$cases_HPA/1000,lwd=2)
+  
+  title(ylab="Cases (thousands)", line=2.5, cex.lab=1)
+  
+  text(x=term_date[1],y=94,labels="Summer holidays",cex=0.8,adj=0,col=col.list[[2]])
+  text(x=term_date2[1],y=94,labels="Half term",cex=0.8,adj=0,col=col.list[[2]])
+  
+  dev.copy(pdf,paste("plots/C3_pandemic_model.pdf",sep=""),width=width.main,height=height.main)
+  dev.off()
+  
+  
+}
+
+
 # Chapter 4 ---------------------------------------------------------------
 
 
